@@ -24,7 +24,7 @@ public class LoggingAspect {
 
     Object result = joinPoint.proceed();
 
-    logger.debug("Exiting method \"{}({})\"", invokedMethod.getName(), parametersTypes);
+    logger.debug("Leaving method \"{}({})\" with result: {}", invokedMethod.getName(), parametersTypes, result);
 
     return result;
   }
