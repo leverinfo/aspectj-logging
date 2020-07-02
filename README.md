@@ -37,7 +37,7 @@ The console shoud show something like this:
 ## Known Limitations
 
 - Currently it works just with Spring Beans
-- It show results just in DEBUG level
+- It shows results just in DEBUG level
 
 ## Roadmap
 
