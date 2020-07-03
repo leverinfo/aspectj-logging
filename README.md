@@ -9,7 +9,7 @@ This library allows logs to be generated automatically for method inputs and out
 
 ## How to Use
 
-For start, configure a Spring Bean like this:
+To start, configure a Spring Bean like this:
 
 ```
 @Bean
