@@ -9,7 +9,17 @@ This library allows logs to be generated automatically for method inputs and out
 
 ## How to Use
 
-To start, configure a Spring Bean like this:
+To start, add that Maven dependency:
+
+```
+<dependency>
+  <groupId>br.com.leverinfo</groupId>
+  <artifactId>aspectj-logging</artifactId>
+  <version>0.1.0-alpha-1</version>
+</dependency>
+```
+
+...configure a Spring Bean like this:
 
 ```
 @Bean
@@ -18,7 +28,7 @@ public LoggingAspect getLogging() {
 }
 ```
 
-So, in your method, add the `@EnableLogging` annotation.
+then, in your method, add the `@EnableLogging` annotation:
 
 ```
 @EnableLogging  
@@ -43,5 +53,9 @@ The console shoud show something like this:
 
 - Make it works without Spring
 - Create a log level configuration to show results
+- Show method execution times
+- Show methor arguments values
 - Create unit tests
 - Configure CI/CD pipeline
+
+Your contribution is appreciated.
