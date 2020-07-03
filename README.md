@@ -43,4 +43,5 @@ The console shoud show something like this:
 
 - Make it works without Spring
 - Create a log level configuration to show results
+- Create unit tests
 - Configure CI/CD pipeline
