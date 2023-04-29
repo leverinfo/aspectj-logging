@@ -7,7 +7,7 @@ exception logs.
 
 ## Requirements
 
-- Java 1.7+
+- Java 1.8+
 - Spring Framework
 
 ## How to Use
@@ -18,7 +18,7 @@ To start, add that Maven dependency:
 <dependency>
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -34,21 +34,43 @@ public LoggingAspect getLogging() {
 then, in your method, add the `@Logging` annotation:
 
 ```
-@Logging  
-public String sayHello() {
-  return "Hello";
+public class Foo {
+  
+  @Logging  
+  public String sayAny(String word) {
+    return "Saying " + word;
+  }
 }
 ```
 
 The console shoud show something like this:
 
 ```
-2022-09-16 15:31:23.611 DEBUG 25908 --- [tp291203641-258] br.com.leverinfo.logging.Test   : method=sayHello([]) return=Hello elapsedTime=1ms
+2023-04-29 14:53:23.611 DEBUG 25908 --- [      main] br.com.leverinfo.logging.Test   : class=Foo method=sayHello([word=Hello]) return=Saying Hello elapsedTime=1ms
 ```
+
+## Configurations
+
+### Specifying log levels for exceptions
+
+It is possible to configure which log level should to use for a given exception class.
+For this, it is necessary configure the `LoggingAspect` like this:
+
+```
+@Bean
+public LoggingAspect getLogging() {
+  LogginAspect loggingAspect = new LoggingAspect();
+  loggingAspect.addExceptionLogLevel(MyException.class, Level.INFO);
+  return loggingAspect;
+}
+```
+
+### Configurations for method
 
 Logging annotation allows some configurations:
 
 - `level` | Set which log level shoud be used | Default: `Level.DEBUG`
+- `logReturn` | Define if return value should be logged | Default: `true`
 - `logError` | Define if errors should be logged | Default: `true`
 - `logErrorTrace` | Define if complete stack trace should be logged. This property works
   together `logError` property, what means that if `logError` is `false`, this property has no
