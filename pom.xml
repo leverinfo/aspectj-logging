@@ -7,15 +7,15 @@
 
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>A library to automatically logs your Java methods.</description>
   <url>https://github.com/leverinfo/aspectj-logging</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <licenses>
@@ -45,13 +45,13 @@
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>1.9.9.1</version>
+      <version>1.9.19</version>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>2.0.0</version>
+      <version>2.0.7</version>
     </dependency>
 
     <dependency>
@@ -73,7 +73,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <configuration>
         </configuration>
         <executions>
@@ -103,7 +103,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -150,27 +150,27 @@
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.10.1</version>
+          <version>3.11.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
+          <version>3.0.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.2.2</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
@@ -178,7 +178,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.4.1</version>
+          <version>3.4.3</version>
         </plugin>
       </plugins>
     </pluginManagement>

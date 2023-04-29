@@ -21,6 +21,13 @@ public @interface Logging {
   Level level() default Level.DEBUG;
 
   /**
+   * Define if return value should be logged
+   *
+   * <p>Default: true
+   */
+  boolean logReturn() default true;
+
+  /**
    * Define if errors should be logged
    *
    * <p>Default: true
