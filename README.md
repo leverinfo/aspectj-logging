@@ -1,9 +1,6 @@
-# aspectj-logging
+# aspectj-logging [![Maven Central](https://img.shields.io/maven-central/v/br.com.leverinfo/aspectj-logging.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22br.com.leverinfo%22%20AND%20a:%22aspectj-logging%22)
 
-[![Maven Central](https://img.shields.io/maven-central/v/br.com.leverinfo/aspectj-logging.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22br.com.leverinfo%22%20AND%20a:%22aspectj-logging%22)
-
-This library allows logs to be generated automatically for method inputs and outputs, in addition to
-exception logs.
+This library helps to handle method logging in Java.
 
 ## Requirements
 
@@ -18,7 +15,7 @@ To start, add that Maven dependency:
 <dependency>
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 

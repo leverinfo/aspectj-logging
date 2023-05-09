@@ -7,9 +7,9 @@
 
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
   <name>${project.groupId}:${project.artifactId}</name>
-  <description>A library to automatically logs your Java methods.</description>
+  <description>A library that helps handle method logging.</description>
   <url>https://github.com/leverinfo/aspectj-logging</url>
 
   <properties>

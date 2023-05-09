@@ -153,7 +153,7 @@ public class LoggingAspect {
     CodeSignature signature = (CodeSignature) joinPoint.getSignature();
     List<String> arguments = new ArrayList<>();
     for (int i = 0; i < signature.getParameterNames().length; i++) {
-      arguments.add(signature.getParameterNames()[i] + "=" + joinPoint.getArgs()[0]);
+      arguments.add(signature.getParameterNames()[i] + "=" + joinPoint.getArgs()[i]);
     }
     return String.join(", ", arguments);
   }
