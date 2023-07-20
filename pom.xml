@@ -7,7 +7,7 @@
 
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>A library that helps handle method logging.</description>
   <url>https://github.com/leverinfo/aspectj-logging</url>

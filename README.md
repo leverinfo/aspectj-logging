@@ -15,14 +15,14 @@ To start, add that Maven dependency:
 <dependency>
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
 </dependency>
 ```
 
 or Gradle:
 
 ```
-implementation 'br.com.leverinfo:aspectj-logging:0.3.0'
+implementation 'br.com.leverinfo:aspectj-logging:0.3.1'
 ```
 
 ...configure a Spring Bean like this:
@@ -49,7 +49,7 @@ public class Foo {
 The console shoud show something like this:
 
 ```
-2023-04-29 14:53:23.611 DEBUG 25908 --- [      main] br.com.leverinfo.logging.Test   : class=Foo method=sayHello([word=Hello]) return=Saying Hello elapsedTime=1ms
+2023-04-29 14:53:23.611 DEBUG 25908 --- [      main] br.com.leverinfo.logging.Test   : class=Foo method=sayHello([word=Hello]) return=Saying Hello elapsedTime=1 ms
 ```
 
 ## Configurations

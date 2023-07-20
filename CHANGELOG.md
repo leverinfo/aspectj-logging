@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+### Improvements
+
+* Separated `ms` from `elapsedTime` value
+
 ## 0.3.0
 
 ### Features

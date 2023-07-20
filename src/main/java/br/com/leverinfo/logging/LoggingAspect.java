@@ -151,7 +151,7 @@ public class LoggingAspect {
       messageValues.add(getResult(method, result));
     }
 
-    messageParts.add("elapsedTime={}ms");
+    messageParts.add("elapsedTime={} ms");
     messageValues.add(elapsed);
 
     return new MessageParams(
