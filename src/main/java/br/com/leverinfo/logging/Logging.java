@@ -14,11 +14,26 @@ import org.slf4j.event.Level;
 public @interface Logging {
 
   /**
+   * Set a custom log message
+   *
+   * <p>Default: ""
+   */
+  String message() default "";
+
+  /**
    * Set which log level shoud be used
    *
    * <p>Default: Level.DEBUG
    */
   Level level() default Level.DEBUG;
+
+  /**
+   * Set the input parameters (index based) that shouldn't be logged. This is useful for not logging
+   * sensitive data, for example.
+   *
+   * <p>Default: {}
+   */
+  int[] excludeParams() default {};
 
   /**
    * Define if return value should be logged

@@ -15,8 +15,14 @@ To start, add that Maven dependency:
 <dependency>
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.2.1</version>
+  <version>0.3.0</version>
 </dependency>
+```
+
+or Gradle:
+
+```
+implementation 'br.com.leverinfo:aspectj-logging:0.3.0'
 ```
 
 ...configure a Spring Bean like this:
@@ -66,7 +72,10 @@ public LoggingAspect getLogging() {
 
 Logging annotation allows some configurations:
 
+- `message` | Set a custom log message | Default: `""`
 - `level` | Set which log level shoud be used | Default: `Level.DEBUG`
+- `excludeParams` | Set the input parameters (index based) that shouldn't be logged. This is useful for not logging
+  sensitive data, for example | Default: `{}`
 - `logReturn` | Define if return value should be logged | Default: `true`
 - `logError` | Define if errors should be logged | Default: `true`
 - `logErrorTrace` | Define if complete stack trace should be logged. This property works
@@ -75,7 +84,7 @@ Logging annotation allows some configurations:
 
 ## Known Limitations
 
-- Currently it works just with Spring Beans
+- Currently, it works just with Spring Beans
 
 ## Roadmap
 

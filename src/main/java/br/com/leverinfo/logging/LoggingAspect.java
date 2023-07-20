@@ -71,13 +71,14 @@ public class LoggingAspect {
     final Logging annotation = method.getAnnotation(Logging.class);
     if (annotation.logError()) {
       final String message =
-          String.format(
-              "class=%s method=%s(%s) errorType=%s errorMessage=%s",
-              joinPoint.getTarget().getClass().getSimpleName(),
-              method.getName(),
-              buildArguments(joinPoint),
-              error.getClass().getSimpleName().replace("Exception", ""),
-              error.getMessage());
+          getCustomMessage(joinPoint)
+              + String.format(
+                  "class=%s method=%s(%s) errorType=%s errorMessage=%s",
+                  joinPoint.getTarget().getClass().getSimpleName(),
+                  method.getName(),
+                  buildArguments(joinPoint),
+                  error.getClass().getSimpleName().replace("Exception", ""),
+                  error.getMessage());
 
       Level errorLevel = exceptionsLogLevels.getOrDefault(error.getClass(), Level.ERROR);
       if (annotation.logErrorTrace()) {
@@ -118,12 +119,20 @@ public class LoggingAspect {
     }
   }
 
-  private Method getMethod(JoinPoint joinPoint) {
+  private static Method getMethod(JoinPoint joinPoint) {
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
     return methodSignature.getMethod();
   }
 
-  private MessageParams buildMessageParams(JoinPoint joinPoint, Object result, long elapsed) {
+  private static String getCustomMessage(JoinPoint joinPoint) {
+    final Method method = getMethod(joinPoint);
+    final Logging annotation = method.getAnnotation(Logging.class);
+
+    return !"".equals(annotation.message()) ? annotation.message() + " " : "";
+  }
+
+  private static MessageParams buildMessageParams(
+      JoinPoint joinPoint, Object result, long elapsed) {
     final Method method = getMethod(joinPoint);
     final Logging annotation = method.getAnnotation(Logging.class);
 
@@ -150,15 +159,23 @@ public class LoggingAspect {
   }
 
   private static String buildArguments(JoinPoint joinPoint) {
+    final Method method = getMethod(joinPoint);
+    final Logging annotation = method.getAnnotation(Logging.class);
+
     CodeSignature signature = (CodeSignature) joinPoint.getSignature();
     List<String> arguments = new ArrayList<>();
     for (int i = 0; i < signature.getParameterNames().length; i++) {
-      arguments.add(signature.getParameterNames()[i] + "=" + joinPoint.getArgs()[i]);
+      arguments.add(
+          signature.getParameterNames()[i]
+              + "="
+              + (Arrays.asList(annotation.excludeParams()).contains(i)
+                  ? joinPoint.getArgs()[i].toString().replaceAll(".", "*")
+                  : joinPoint.getArgs()[i]));
     }
     return String.join(", ", arguments);
   }
 
-  private Object getResult(Method method, Object result) {
+  private static Object getResult(Method method, Object result) {
     return !method.getReturnType().equals(Void.TYPE) ? result : "void";
   }
 
