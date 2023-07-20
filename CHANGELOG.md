@@ -6,6 +6,11 @@
 
 * Improvements on error logs
 
+### Bug fixes
+
+* Log message don't respecting custom message value
+* Exclude params isn't working
+
 ## 0.3.1
 
 ### Improvements

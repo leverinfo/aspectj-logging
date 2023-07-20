@@ -2,6 +2,7 @@ package br.com.leverinfo.logging;
 
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -71,14 +72,13 @@ public class LoggingAspect {
     final Logging annotation = method.getAnnotation(Logging.class);
     if (annotation.logError()) {
       final String message =
-          getCustomMessage(joinPoint)
-              + String.format(
-                  "%s errorType=%s class=%s method=%s(%s)",
-                  error.getMessage(),
-                  error.getClass().getSimpleName().replace("Exception", ""),
-                  joinPoint.getTarget().getClass().getSimpleName(),
-                  method.getName(),
-                  buildArguments(joinPoint));
+          String.format(
+              "%s errorType=%s class=%s method=%s(%s)",
+              error.getMessage(),
+              error.getClass().getSimpleName().replace("Exception", ""),
+              joinPoint.getTarget().getClass().getSimpleName(),
+              method.getName(),
+              buildArguments(joinPoint));
 
       Level errorLevel = exceptionsLogLevels.getOrDefault(error.getClass(), Level.ERROR);
       if (annotation.logErrorTrace()) {
@@ -139,9 +139,6 @@ public class LoggingAspect {
     List<String> messageParts = new ArrayList<>();
     List<Object> messageValues = new ArrayList<>();
 
-    messageParts.add("class={}");
-    messageValues.add(joinPoint.getTarget().getClass().getSimpleName());
-
     messageParts.add("method={}({})");
     messageValues.add(method.getName());
     messageValues.add(buildArguments(joinPoint));
@@ -155,7 +152,9 @@ public class LoggingAspect {
     messageValues.add(elapsed);
 
     return new MessageParams(
-        annotation.level(), String.join(" ", messageParts), messageValues.toArray());
+        annotation.level(),
+        getCustomMessage(joinPoint) + String.join(" ", messageParts),
+        messageValues.toArray());
   }
 
   private static String buildArguments(JoinPoint joinPoint) {
@@ -168,8 +167,11 @@ public class LoggingAspect {
       arguments.add(
           signature.getParameterNames()[i]
               + "="
-              + (Arrays.asList(annotation.excludeParams()).contains(i)
-                  ? joinPoint.getArgs()[i].toString().replaceAll(".", "*")
+              + (Arrays.stream(annotation.excludeParams())
+                      .boxed()
+                      .collect(Collectors.toList())
+                      .contains(i)
+                  ? "********"
                   : joinPoint.getArgs()[i]));
     }
     return String.join(", ", arguments);
