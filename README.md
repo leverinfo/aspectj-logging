@@ -15,14 +15,14 @@ To start, add that Maven dependency:
 <dependency>
   <groupId>br.com.leverinfo</groupId>
   <artifactId>aspectj-logging</artifactId>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
 </dependency>
 ```
 
 or Gradle:
 
 ```
-implementation 'br.com.leverinfo:aspectj-logging:0.3.1'
+implementation 'br.com.leverinfo:aspectj-logging:0.3.2'
 ```
 
 ...configure a Spring Bean like this:

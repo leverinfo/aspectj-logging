@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2
+
+### Improvements
+
+* Improvements on error logs
+
 ## 0.3.1
 
 ### Improvements

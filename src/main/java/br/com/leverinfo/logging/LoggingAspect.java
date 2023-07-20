@@ -73,12 +73,12 @@ public class LoggingAspect {
       final String message =
           getCustomMessage(joinPoint)
               + String.format(
-                  "class=%s method=%s(%s) errorType=%s errorMessage=%s",
+                  "%s errorType=%s class=%s method=%s(%s)",
+                  error.getMessage(),
+                  error.getClass().getSimpleName().replace("Exception", ""),
                   joinPoint.getTarget().getClass().getSimpleName(),
                   method.getName(),
-                  buildArguments(joinPoint),
-                  error.getClass().getSimpleName().replace("Exception", ""),
-                  error.getMessage());
+                  buildArguments(joinPoint));
 
       Level errorLevel = exceptionsLogLevels.getOrDefault(error.getClass(), Level.ERROR);
       if (annotation.logErrorTrace()) {
