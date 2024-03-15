@@ -53,7 +53,7 @@ public @interface Logging {
    * Define if complete stack trace should be logged. This property works together "logError"
    * property, what means that if "logError" is false, this property has no effect
    *
-   * <p>Default: false
+   * <p>Default: true
    */
-  boolean logErrorTrace() default false;
+  boolean logErrorTrace() default true;
 }

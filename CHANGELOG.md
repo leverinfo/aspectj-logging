@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+### Improvements
+
+* Removed "class" from log message, since it's already present in the log name
+* Made logging error trace enabled by default
+
 ## 0.3.2
 
 ### Improvements

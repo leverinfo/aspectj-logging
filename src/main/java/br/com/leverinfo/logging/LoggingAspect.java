@@ -73,10 +73,9 @@ public class LoggingAspect {
     if (annotation.logError()) {
       final String message =
           String.format(
-              "%s errorType=%s class=%s method=%s(%s)",
+              "%s errorType=%s method=%s(%s)",
               error.getMessage(),
               error.getClass().getSimpleName().replace("Exception", ""),
-              joinPoint.getTarget().getClass().getSimpleName(),
               method.getName(),
               buildArguments(joinPoint));
 
